@@ -1,6 +1,14 @@
-output "ecr_repository_url" {
-  description = "ECR repository URL"
-  value       = module.ecr.repository_url
+output "ecr_repository_urls" {
+  description = "Map of repository names to their ECR URLs"
+  value = {
+    for key, mod in module.ecr :
+    key => mod.repository_url
+  }
+}
+
+output "vpc_id" {
+  description = "VPC ID"
+  value       = module.vpc.vpc_id
 }
 
 output "cluster_endpoint" {

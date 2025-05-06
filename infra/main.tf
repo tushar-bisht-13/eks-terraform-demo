@@ -23,9 +23,13 @@ module "eks" {
 }
 
 module "ecr" {
-  source         = "./modules/ecr"
-  repository_name = var.repository_name
+  source = "./modules/ecr"
+
+  for_each         = var.ecr_repositories
+  repository_name  = each.value
 }
+
+
 
 # module "ebs" {
 #   source            = "./modules/ebs"

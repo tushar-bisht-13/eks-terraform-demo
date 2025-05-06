@@ -70,11 +70,13 @@ variable "public_subnet_cidrs" {
 
 #ECR module variables
 
-variable "repository_name" {
-  description = "The name of the ECR repository."
-  type        = string
-  default     = "demo-repo"
-  
+variable "ecr_repositories" {
+  description = "Map of ECR repositories to create"
+  type        = map(string)
+  default = {
+    ecr1 = "demo-ecr1"
+    ecr2 = "demo-ecr2"
+  }
 }
 
 #EBS module variables
